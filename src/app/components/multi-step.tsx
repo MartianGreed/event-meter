@@ -15,13 +15,17 @@ export function useMultistep() {
   return useContext(MultiStepContext);
 }
 
-export function MultiStep({ children, defaultStep = 1 }) {
+type MultiStepProps = {
+  defaultStep?: number;
+};
+
+export function MultiStep({ children, defaultStep = 1 }: React.PropsWithChildren<MultiStepProps>) {
   const [activeStep, setActiveStep] = useState<number>(0);
   useEffect(() => {
     if (activeStep === 0) {
       setActiveStep(defaultStep > React.Children.count(children) ? React.Children.count(children) : defaultStep);
     }
-  }, [activeStep, defaultStep]);
+  }, [activeStep, defaultStep, children]);
 
   const steps = React.Children.map(children, (_, idx) => {
     return (
@@ -30,10 +34,14 @@ export function MultiStep({ children, defaultStep = 1 }) {
   });
 
   const content = React.Children.map(children, (child, idx) => {
-    if (typeof child.type === 'function') {
+    // @ts-ignore
+    if (typeof child?.type === 'function') {
+      // @ts-ignore
       return <div className={idx + 1 === activeStep ? "active" : ""}>{React.cloneElement(child)}</div>
     }
+    // @ts-ignore
     return React.cloneElement(child, {
+      // @ts-ignore
       className: `${idx + 1 === activeStep ? "active" : ""}${undefined !== child.props.className ? ' ' + child.props.className : ''}`,
     })
   });

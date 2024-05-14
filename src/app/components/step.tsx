@@ -1,6 +1,12 @@
 import { useMultistep } from "./multi-step";
 
-export function Step({ children, title, previousLabel = 'Previous', nextLabel = 'Next' }) {
+type StepProps = {
+  title: string;
+  previousLabel?: string;
+  nextLabel?: string;
+}
+
+export function Step({ children, title, previousLabel = 'Previous', nextLabel = 'Next' }: React.PropsWithChildren<StepProps>) {
   const { previous, next } = useMultistep();
   return (
     <div>
