@@ -86,5 +86,4 @@ describe('MultiStep', () => {
     expect(active).not.toBe(null)
     expect(active?.textContent).toBe('Step 2previousnext')
   });
-
 });

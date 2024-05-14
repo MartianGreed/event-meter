@@ -34,7 +34,7 @@ export function MultiStep({ children, defaultStep = 1 }) {
       return <div className={idx + 1 === activeStep ? "active" : ""}>{React.cloneElement(child)}</div>
     }
     return React.cloneElement(child, {
-      className: `${undefined !== child.props.className ? child.props.className : ''}${idx + 1 === activeStep ? " active" : ""}`,
+      className: `${idx + 1 === activeStep ? "active" : ""}${undefined !== child.props.className ? ' ' + child.props.className : ''}`,
     })
   });
 
