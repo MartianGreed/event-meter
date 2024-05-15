@@ -1,6 +1,5 @@
-import { describe, it, expect } from 'bun:test';
-import * as React from 'react';
-import { render, fireEvent } from '@testing-library/react'
+import { describe, it, expect, beforeEach } from 'bun:test';
+import { render, fireEvent, cleanup } from '@testing-library/react'
 import { MultiStep, useMultistep } from './multi-step';
 
 function Step({ title }: { title: string }) {
@@ -11,6 +10,10 @@ function Step({ title }: { title: string }) {
     <button onClick={() => next()}>next</button>
   </div>
 }
+
+beforeEach(() => {
+  cleanup();
+});
 
 describe('MultiStep', () => {
   it('generate steps based off children', () => {
