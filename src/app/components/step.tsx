@@ -14,10 +14,10 @@ export function Step({ children, title, previousLabel = 'Previous', nextLabel = 
       <div>
         {children}
       </div>
-      <div>
-        <button onClick={() => previous()}>{previousLabel}</button>
-        <button onClick={() => next()}>{nextLabel}</button>
-      </div>
+      {/* <div> */}
+      {/*   <button onClick={() => previous()}>{previousLabel}</button> */}
+      {/*   <button onClick={() => next()}>{nextLabel}</button> */}
+      {/* </div> */}
     </div>
   );
 }

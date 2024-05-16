@@ -1,6 +1,7 @@
 import { SubmitHandler, useForm } from "react-hook-form";
 import { ServicesAndMaterialsFormInputs } from "../../types/form";
 import { Field } from "./field";
+import { useMultistep } from "../components/multi-step";
 
 type ServicesAndMaterialsProps = {
   submitCb: (data: ServicesAndMaterialsFormInputs) => void;
@@ -8,9 +9,11 @@ type ServicesAndMaterialsProps = {
 
 export function ServicesAndMaterials({ submitCb }: ServicesAndMaterialsProps) {
   const { register, handleSubmit } = useForm<ServicesAndMaterialsFormInputs>();
+  const { previous, next } = useMultistep();
 
   const onSubmit: SubmitHandler<ServicesAndMaterialsFormInputs> = async (data: ServicesAndMaterialsFormInputs) => {
-    submitCb(data)
+    submitCb(data);
+    next();
   };
 
   return (
@@ -21,6 +24,8 @@ export function ServicesAndMaterials({ submitCb }: ServicesAndMaterialsProps) {
       <Field label="Glass" name="glass" register={register} />
       <Field label="Plastic" name="plastic" register={register} />
       <Field label="Paper" name="paper" register={register} />
+
+      <button type="button" className="bg-blue-500 text-white rounded p-2" onClick={() => previous()}>Previous</button>
       <input type="submit" className="bg-blue-500 text-white rounded p-2" value="Submit" />
     </form>
   )

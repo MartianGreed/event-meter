@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
+import styles from './multi-step.module.css';
 
 type IMultiStepContext = {
   previous: () => void;
@@ -27,9 +28,12 @@ export function MultiStep({ children, defaultStep = 1 }: React.PropsWithChildren
     }
   }, [activeStep, defaultStep, children]);
 
+  const handleListClick = (step: number) => {
+    setActiveStep(step);
+  }
   const steps = React.Children.map(children, (_, idx) => {
     return (
-      <li className={idx + 1 === activeStep ? "active" : ""}>{idx + 1}</li>
+      <li className={idx + 1 === activeStep ? styles.active : ""} onClick={() => handleListClick(idx + 1)}>{idx + 1}</li>
     )
   });
 
@@ -37,24 +41,24 @@ export function MultiStep({ children, defaultStep = 1 }: React.PropsWithChildren
     // @ts-ignore
     if (typeof child?.type === 'function') {
       // @ts-ignore
-      return <div className={idx + 1 === activeStep ? "active" : ""}>{React.cloneElement(child)}</div>
+      return <div className={idx + 1 === activeStep ? styles.contentItemActive : ""}>{React.cloneElement(child)}</div>
     }
     // @ts-ignore
     return React.cloneElement(child, {
       // @ts-ignore
-      className: `${idx + 1 === activeStep ? "active" : ""}${undefined !== child.props.className ? ' ' + child.props.className : ''}`,
+      className: `${idx + 1 === activeStep ? styles.contentItemActive : ""}${undefined !== child.props.className ? ' ' + child.props.className : ''}`,
     })
   });
 
   return (
     <MultiStepContext.Provider value={{
-      previous: () => setActiveStep(activeStep - 1),
-      next: () => setActiveStep(activeStep + 1),
+      previous: () => activeStep - 1 > 0 ? setActiveStep(activeStep - 1) : setActiveStep(1),
+      next: () => activeStep + 1 <= steps?.length ? setActiveStep(activeStep + 1) : setActiveStep(steps?.length),
       activeStep,
     }}>
-      <div>
-        <div className="step">{steps}</div>
-        <div className="content-wrapper ">
+      <div className={styles.multistepContainer}>
+        <div className={styles.step}>{steps}</div>
+        <div className={styles.contentWrapper}>
           {content}
         </div>
       </div>

@@ -40,12 +40,18 @@ devDependencies:
   '@types/react-dom':
     specifier: ^18.3.0
     version: 18.3.0
+  bun-module-name-mapper:
+    specifier: ^1.0.11
+    version: 1.0.11
   eslint:
     specifier: ^8
     version: 8.57.0
   eslint-config-next:
     specifier: 14.2.3
     version: 14.2.3(eslint@8.57.0)(typescript@5.4.5)
+  jest-css-modules:
+    specifier: ^2.1.0
+    version: 2.1.0
   jsdom:
     specifier: ^24.0.0
     version: 24.0.0
@@ -759,6 +765,10 @@ packages:
     engines: {node: '>=8'}
     dependencies:
       fill-range: 7.0.1
+    dev: true
+
+  /bun-module-name-mapper@1.0.11:
+    resolution: {integrity: sha512-X+yLzL/dNsbrEjnlSJuocXF2vKICcbzCyD6ToITNwhNsYG5/QM9coB08QD7L6Q9tHXZ16djO+W9DfBUurwSVTg==}
     dev: true
 
   /busboy@1.6.0:
@@ -1707,6 +1717,10 @@ packages:
       whatwg-mimetype: 3.0.0
     dev: true
 
+  /harmony-reflect@1.6.2:
+    resolution: {integrity: sha512-HIp/n38R9kQjDEziXyDTuW3vvoxxyxjxFzXLrBr18uB47GnSt+G9D29fqrpM5ZkspMcPICud3XsBJQ4Y2URg8g==}
+    dev: true
+
   /has-bigints@1.0.2:
     resolution: {integrity: sha512-tSvCKtBr9lkF0Ex0aQiP9N+OpV4zi2r/Nee5VkRDbaqv35RLYMzbwQfFSZZH0kR+Rd6302UJZ2p/bJCEoR3VoQ==}
     dev: true
@@ -1783,6 +1797,13 @@ packages:
     engines: {node: '>=0.10.0'}
     dependencies:
       safer-buffer: 2.1.2
+    dev: true
+
+  /identity-obj-proxy@3.0.0:
+    resolution: {integrity: sha512-00n6YnVHKrinT9t0d9+5yZC6UBNJANpYEQvL2LlX6Ab9lnmxzIRcEmTPuyGScvl1+jKuCICX1Z0Ab1pPKKdikA==}
+    engines: {node: '>=4'}
+    dependencies:
+      harmony-reflect: 1.6.2
     dev: true
 
   /ignore@5.3.1:
@@ -2035,6 +2056,12 @@ packages:
       '@isaacs/cliui': 8.0.2
     optionalDependencies:
       '@pkgjs/parseargs': 0.11.0
+    dev: true
+
+  /jest-css-modules@2.1.0:
+    resolution: {integrity: sha512-my3Scnt6l2tOll/eGwNZeh1KLAFkNzdl4MyZRdpl46GO6/93JcKKdTjNqK6Nokg8A8rT84MFLOpY1pzqKBEqMw==}
+    dependencies:
+      identity-obj-proxy: 3.0.0
     dev: true
 
   /jiti@1.21.0:

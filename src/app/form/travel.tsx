@@ -1,16 +1,18 @@
 import { SubmitHandler, useForm } from "react-hook-form";
 import { TravelFormInputs } from "../../types/form";
-import { Field } from "./field";
 import { PersKmField } from "./pers-km-field";
+import { useMultistep } from "../components/multi-step";
 
 type TravelProps = {
   submitCb: (data: TravelFormInputs) => void;
 }
 export function Travel({ submitCb }: TravelProps) {
   const { register, handleSubmit } = useForm<TravelFormInputs>();
+  const { previous, next } = useMultistep();
 
   const onSubmit: SubmitHandler<TravelFormInputs> = async (data: TravelFormInputs) => {
     submitCb(data)
+    next();
   };
 
   return (
@@ -30,6 +32,7 @@ export function Travel({ submitCb }: TravelProps) {
       <PersKmField label="Train in Europe" name="trainEurope" register={register} />
       <PersKmField label="Train in France" name="trainFrance" register={register} />
 
+      <button type="button" className="bg-blue-500 text-white rounded p-2" onClick={() => previous()}>Previous</button>
       <input type="submit" className="bg-blue-500 text-white rounded p-2" value="Submit" />
     </form>
   )

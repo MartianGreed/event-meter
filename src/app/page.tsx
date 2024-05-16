@@ -1,33 +1,45 @@
 "use client";
 
-import { SubmitHandler, useForm } from "react-hook-form"
-import { submitForm } from "./actions/submit-form";
-import { Inputs } from "../types/form";
 import { MultiStep } from "./components/multi-step";
 import { Step } from "./components/step";
+import { Energy } from "./form/energy";
+import { Travel } from "./form/travel";
+import { Catering } from "./form/catering";
+import { Accomodation } from "./form/accomodation";
+import { ServicesAndMaterials } from "./form/services-and-materials";
+import { Logistics } from "./form/logistics";
 
 export default function Home() {
-  const { register, handleSubmit } = useForm<Inputs>();
 
-  const onSubmit: SubmitHandler<Inputs> = async (data: Inputs) => {
-    console.log('submit');
-    const res = await submitForm(data);
-    console.log(res);
+  const handleSubmit = (category: string) => {
+    return function(data: any) {
+      console.log(data, category);
+    }
   };
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
+    <main className="flex min-h-screen flex-col items-center p-24">
       <h1 className="text-4xl font-bold">EventMeter</h1>
       <MultiStep>
-        <Step title="Step 1">Content 1</Step>
-        <Step title="Step 2">Content 2</Step>
-        <Step title="Step 3">Content 3</Step>
+        <Step title="Energy">
+          <Energy submitCb={handleSubmit('energy')} />
+        </Step>
+        <Step title="Travel">
+          <Travel submitCb={handleSubmit('travel')} />
+        </Step>
+        <Step title="Cattering">
+          <Catering submitCb={handleSubmit('cattering')} />
+        </Step>
+        <Step title="Accomodation">
+          <Accomodation submitCb={handleSubmit('accomodation')} />
+        </Step>
+        <Step title="Services and Materials">
+          <ServicesAndMaterials submitCb={handleSubmit('services-and-materials')} />
+        </Step>
+        <Step title="Logistics">
+          <Logistics submitCb={handleSubmit('logistics')} />
+        </Step>
       </MultiStep>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <input {...register('name')} className="border border-gray-300 rounded p-2 text-black" placeholder="Name" />
-        <input {...register('email')} className="border border-gray-300 rounded p-2 text-black" placeholder="Email" />
-        <input type="submit" className="bg-blue-500 text-white rounded p-2" value="Submit" />
-      </form>
     </main>
   );
 }

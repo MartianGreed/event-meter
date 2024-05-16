@@ -1,0 +1,24 @@
+.multistepContainer {
+
+}
+
+.multistepContainer header {
+  @apply mb-6 text-center;
+}
+
+.step {
+  @apply flex flex-row justify-center items-center gap-6 my-6;
+}
+.step li {
+  @apply list-none border border-white rounded-full w-8 h-8 flex items-center justify-center;
+}
+.step li.active {
+  @apply bg-white text-black;
+}
+
+.contentWrapper >:not(.contentItemActive){
+  @apply hidden;
+}
+.contentItemActive {
+  @apply flex flex-col gap-4;
+}
