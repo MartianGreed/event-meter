@@ -56,3 +56,12 @@ export type LogisticsFormInputs = {
   communication: number;
   other: number;
 }
+
+export type AggregatedTypes = {
+  energy: EnergyFormInputs;
+  travel: TravelFormInputs;
+  catering: CateringFormInputs;
+  accomodation: AccomodationFormInputs;
+  servicesAndMaterials: ServicesAndMaterialsFormInputs;
+  logistics: LogisticsFormInputs;
+}

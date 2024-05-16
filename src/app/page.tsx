@@ -1,5 +1,6 @@
 "use client";
 
+import { useCallback, useState } from "react";
 import { MultiStep } from "./components/multi-step";
 import { Step } from "./components/step";
 import { Energy } from "./form/energy";
@@ -8,14 +9,20 @@ import { Catering } from "./form/catering";
 import { Accomodation } from "./form/accomodation";
 import { ServicesAndMaterials } from "./form/services-and-materials";
 import { Logistics } from "./form/logistics";
+import { handleFormValues } from "./actions/submit-form"
 
 export default function Home() {
+  const [formValues, setFormValues] = useState({});
 
-  const handleSubmit = (category: string) => {
-    return function(data: any) {
-      console.log(data, category);
+  const handleSubmit = useCallback((category: string) => {
+    return async function(data: any) {
+      setFormValues((prev) => ({ ...prev, [category]: data }));
+      if (category === 'logistics') {
+        console.log(formValues);
+        const res = await handleFormValues(formValues);
+      }
     }
-  };
+  }, [formValues, setFormValues]);
 
   return (
     <main className="flex min-h-screen flex-col items-center p-24">

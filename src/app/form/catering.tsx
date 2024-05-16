@@ -18,11 +18,13 @@ export function Catering({ submitCb }: CateringProps) {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <Field label="Meals" name="meals" register={register} />
-      <Field label="Drinks" name="drinks" register={register} />
+      <Field label="Meals" name="meals" placeholder="Units" register={register} />
+      <Field label="Drinks" name="drinks" placeholder="Units" register={register} />
 
-      <button type="button" className="bg-blue-500 text-white rounded p-2" onClick={() => previous()}>Previous</button>
-      <input type="submit" className="bg-blue-500 text-white rounded p-2" value="Submit" />
+      <div className="flex justify-between">
+        <button type="button" className="bg-blue-500 text-white rounded p-2" onClick={() => previous()}>Previous</button>
+        <input type="submit" className="bg-blue-500 text-white rounded p-2" value="Submit" />
+      </div>
     </form>
   )
 }

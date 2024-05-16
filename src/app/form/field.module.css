@@ -1,0 +1,9 @@
+.container {
+  @apply flex flex-col mb-4;
+}
+.label {
+
+}
+.input {
+ @apply text-black p-2;
+}

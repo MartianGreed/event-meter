@@ -32,8 +32,11 @@ export function Travel({ submitCb }: TravelProps) {
       <PersKmField label="Train in Europe" name="trainEurope" register={register} />
       <PersKmField label="Train in France" name="trainFrance" register={register} />
 
-      <button type="button" className="bg-blue-500 text-white rounded p-2" onClick={() => previous()}>Previous</button>
-      <input type="submit" className="bg-blue-500 text-white rounded p-2" value="Submit" />
+
+      <div className="flex justify-between">
+        <button type="button" className="bg-blue-500 text-white rounded p-2" onClick={() => previous()}>Previous</button>
+        <input type="submit" className="bg-blue-500 text-white rounded p-2" value="Submit" />
+      </div>
     </form>
   )
 }

@@ -18,10 +18,12 @@ export function Accomodation({ submitCb }: AccomodationProps) {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <Field label="Total reservations" name="totalReservations" register={register} />
+      <Field label="Total reservations" name="totalReservations" placeholder="Units" register={register} />
 
-      <button type="button" className="bg-blue-500 text-white rounded p-2" onClick={() => previous()}>Previous</button>
-      <input type="submit" className="bg-blue-500 text-white rounded p-2" value="Submit" />
+      <div className="flex justify-between">
+        <button type="button" className="bg-blue-500 text-white rounded p-2" onClick={() => previous()}>Previous</button>
+        <input type="submit" className="bg-blue-500 text-white rounded p-2" value="Submit" />
+      </div>
     </form>
   )
 }

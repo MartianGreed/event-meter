@@ -24,13 +24,15 @@ export function Logistics({ submitCb }: LogisticsProps) {
         <option value="van">Van</option>
         <option value="semi-trailer">Semi Trailer</option>
       </Select >
-      <Field label="Transport of fittings and decoration" name="decoration" register={register} />
-      <Field label="Transport of cattering products" name="cattering" register={register} />
-      <Field label="Transport of communication media" name="communication" register={register} />
-      <Field label="Transport of other goods" name="other" register={register} />
+      <Field label="Transport of fittings and decoration" name="decoration" placeholder="Km" register={register} />
+      <Field label="Transport of cattering products" name="cattering" placeholder="Km" register={register} />
+      <Field label="Transport of communication media" name="communication" placeholder="Km" register={register} />
+      <Field label="Transport of other goods" name="other" placeholder="Km" register={register} />
 
-      <button type="button" className="bg-blue-500 text-white rounded p-2" onClick={() => previous()}>Previous</button>
-      <input type="submit" className="bg-blue-500 text-white rounded p-2" value="Submit" />
+      <div className="flex justify-between">
+        <button type="button" className="bg-blue-500 text-white rounded p-2" onClick={() => previous()}>Previous</button>
+        <input type="submit" className="bg-blue-500 text-white rounded p-2" value="Submit" />
+      </div>
     </form>
   )
 }

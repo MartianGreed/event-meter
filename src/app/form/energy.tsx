@@ -23,7 +23,10 @@ export function Energy({ submitCb }: EnergyProps) {
       <Field label="Fuel Oil" name="oil" placeholder="Total in liters" register={register} />
       <Field label="Power" name="generatorPower" placeholder="Kw" register={register} />
       <Field label="Duration of use" name="generatorDuration" placeholder="in hours" register={register} />
-      <input type="submit" className="bg-blue-500 text-white rounded p-2" value="Submit" />
+
+      <div className="flex justify-between">
+        <input type="submit" className="bg-blue-500 text-white rounded p-2" value="Submit" />
+      </div>
     </form>
   )
 }
