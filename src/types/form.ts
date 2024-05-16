@@ -1,8 +1,3 @@
-export type Inputs = {
-  name: string;
-  email: string;
-};
-
 export type EnergyFormInputs = {
   electricity: number;
   gas: number;
@@ -10,6 +5,13 @@ export type EnergyFormInputs = {
   generatorPower: number;
   generatorDuration: number;
 };
+export const defaultEnergyFormInputs = {
+  gas: 0,
+  electricity: 0,
+  oil: 0,
+  generatorPower: 0,
+  generatorDuration: 0,
+}
 
 export type TravelFormInputs = {
   carNumber: number;
@@ -36,18 +38,53 @@ export type TravelFormInputs = {
   trainFranceKm: number;
 }
 
+export const defaultTravelFormInputs = {
+  carNumber: 0,
+  carKm: 0,
+  electricCarNumber: 0,
+  electricCarKm: 0,
+  hybridCarNumber: 0,
+  hybridCarKm: 0,
+  twoWheelersNumber: 0,
+  twoWheelersKm: 0,
+  shortAirTravelNumber: 0,
+  shortAirTravelKm: 0,
+  mediumAirTravelNumber: 0,
+  mediumAirTravelKm: 0,
+  longAirTravelNumber: 0,
+  longAirTravelKm: 0,
+  metroNumber: 0,
+  metroKm: 0,
+  busNumber: 0,
+  busKm: 0,
+  trainEuropeNumber: 0,
+  trainEuropeKm: 0,
+  trainFranceNumber: 0,
+  trainFranceKm: 0,
+};
+
 export type CateringFormInputs = {
   meals: number;
   drinks: number;
+};
+export const defaultCateringFormInputs = {
+  meals: 0,
+  drinks: 0,
 };
 
 export type AccomodationFormInputs = {
   nights: number;
 };
+export const defaultAccomodationFormInputs = {
+  nights: 0,
+};
 
 export type ServicesAndMaterialsFormInputs = {
   cardboard: number; iron: number; steel: number; glass: number; plastic: number; paper: number;
 }
+export const defaultServicesAndMaterialsFormInputs = {
+  cardboard: 0, iron: 0, steel: 0, glass: 0, plastic: 0, paper: 0,
+};
 
 export type LogisticsFormInputs = {
   vehicule: string;
@@ -56,6 +93,14 @@ export type LogisticsFormInputs = {
   communication: number;
   other: number;
 }
+export const defaultLogisticsFormInputs = {
+  vehicule: 'van',
+  decoration: 0,
+  cattering: 0,
+  communication: 0,
+  other: 0,
+};
+
 
 export type AggregatedTypes = {
   energy: EnergyFormInputs;
@@ -64,4 +109,8 @@ export type AggregatedTypes = {
   accomodation: AccomodationFormInputs;
   servicesAndMaterials: ServicesAndMaterialsFormInputs;
   logistics: LogisticsFormInputs;
+}
+
+export type CompensationEstimation = {
+  value: number;
 }
