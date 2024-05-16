@@ -10,9 +10,25 @@ import { Accomodation } from "./form/accomodation";
 import { ServicesAndMaterials } from "./form/services-and-materials";
 import { Logistics } from "./form/logistics";
 import { handleFormValues } from "./actions/submit-form"
+import { AggregatedTypes } from "../types/form";
 
+
+const defaultAggregatedTypes: AggregatedTypes = {
+  // @ts-ignore
+  energy: null,
+  // @ts-ignore
+  travel: null,
+  // @ts-ignore
+  cattering: null,
+  // @ts-ignore
+  accomodation: null,
+  // @ts-ignore
+  servicesAndMaterials: null,
+  // @ts-ignore
+  logistics: null,
+};
 export default function Home() {
-  const [formValues, setFormValues] = useState({});
+  const [formValues, setFormValues] = useState<AggregatedTypes>(defaultAggregatedTypes);
 
   const handleSubmit = useCallback((category: string) => {
     return async function(data: any) {

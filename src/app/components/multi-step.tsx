@@ -53,6 +53,7 @@ export function MultiStep({ children, defaultStep = 1 }: React.PropsWithChildren
   return (
     <MultiStepContext.Provider value={{
       previous: () => activeStep - 1 > 0 ? setActiveStep(activeStep - 1) : setActiveStep(1),
+      // @ts-ignore
       next: () => activeStep + 1 <= steps?.length ? setActiveStep(activeStep + 1) : setActiveStep(steps?.length),
       activeStep,
     }}>
